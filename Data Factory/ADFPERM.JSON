@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
       "DataFactory_name": {
-        "value": "BQAZE1IRDARRGDF01"
+        "value": "bqazeirdarfactory0101"
       },
       "DataFactory_tags": {
         "value": {
