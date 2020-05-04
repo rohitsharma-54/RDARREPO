@@ -20,7 +20,9 @@
     "maxIntervalInSeconds": {
       "value": 300
     },
-    
+    "multipleWriteLocations": {
+      "value": "Disable"
+    },
     "automaticFailover": {
       "value": true
     }

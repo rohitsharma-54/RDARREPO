@@ -74,7 +74,17 @@
 				"description": "Max lag time (seconds). Required for BoundedStaleness. Valid ranges, Single Region: 5 to 84600. Multi Region: 300 to 86400."
 			}
 		},	
-		
+		"multipleWriteLocations": {
+			"type": "bool",
+			"defaultValue": false,
+			"allowedValues": [
+				true,
+				false
+			],
+			"metadata": {
+				"description": "Enable multi-master to make all regions writable."
+			}
+		},
 		"automaticFailover": {
 			"type": "bool",
 			"defaultValue": true,
@@ -171,7 +181,7 @@
 				"databaseAccountOfferType": "Standard",
 				"enableAutomaticFailover": "[parameters('automaticFailover')]",
 				"capabilities": "[variables('apiType')[parameters('api')].capabilities]",
-				
+				"enableMultipleWriteLocations": "[parameters('multipleWriteLocations')]"
 			}
 		}
 	]
