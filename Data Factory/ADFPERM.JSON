@@ -13,9 +13,7 @@
           "originating-request-number": "RITM0011623",
           "project-code": "RDAR"
         }
-      },
-      "location": {
-        "value": "[resourceGroup().location]"
       }
+     
     }
   }
