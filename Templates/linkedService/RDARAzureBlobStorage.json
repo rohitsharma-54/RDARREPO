@@ -1,0 +1,20 @@
+{
+	"name": "RDARAzureBlobStorage",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "RG-BDAZE1IRDARRG01\nstorage-bdaze1irdarrsa03\n",
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "DevAzureKeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "devstorage",
+				"secretVersion": "e55e910441d94a15a1ab79fbf3d07e2d"
+			}
+		}
+	}
+}

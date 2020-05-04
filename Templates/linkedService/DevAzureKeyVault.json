@@ -1,0 +1,12 @@
+{
+	"name": "DevAzureKeyVault",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "bdazweibisnsa01 -BDAZE1IRDARRVAULT02",
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://BDAZE1IRDARRVAULT02.vault.azure.net/"
+		}
+	}
+}

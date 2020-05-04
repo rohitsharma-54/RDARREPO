@@ -1,0 +1,103 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vault_name": {
+            "type": "string",
+            "metadata": {
+				"description": "Name of the keyvault"
+            }
+        },
+        "vault_tags": {
+			"type": "object",
+			"metadata": {
+				"description": "The tags to be applied to the deployed resources"
+            }
+        },
+        "vault_sku": {
+			"type": "object",
+			"metadata": {
+				"description": "The sku details of deployed resources"
+            }
+        },
+        "vault_enabled_for_deployment": {
+            "type": "bool"
+        },
+        "vault_enabled_for_disk_encryption": {
+            "type": "bool"
+        },
+        "vault_enabled_for_template_deployment": {
+            "type": "bool"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.KeyVault/vaults",
+            "apiVersion": "2016-10-01",
+            "name": "[parameters('vault_name')]",
+            "location": "[resourceGroup().location]",
+            "tags": "[parameters('vault_tags')]",
+            "properties": {
+                "sku":"[parameters('vault_sku')]",
+                "tenantId": "[subscription().tenantId]",
+                "enabledForDeployment": "[parameters('vault_enabled_for_deployment')]",
+                "enabledForDiskEncryption": "[parameters('vault_enabled_for_disk_encryption')]",
+                "enabledForTemplateDeployment": "[parameters('vault_enabled_for_template_deployment')]",
+                "accessPolicies": [{
+                    "tenantId": "[subscription().tenantId]",
+                    "objectId": "9f9ad428-af91-40fa-b166-e54a325567ba",
+                    "permissions": {
+                        "keys": [
+                            "get",
+                            "list",
+                            "update",
+                            "create",
+                            "import",
+                            "delete",
+                            "recover",
+                            "backup",
+                            "restore",
+                            "decrypt",
+                            "encrypt",
+                            "unwrapKey",
+                            "wrapKey",
+                            "verify",
+                            "sign",
+                            "purge"
+                        ],
+                        "secrets": [
+                            "get",
+                            "list",
+                            "set",
+                            "delete",
+                            "recover",
+                            "backup",
+                            "restore",
+                            "purge"
+                        ],
+                        "certificates": [
+                            "get",
+                            "list",
+                            "update",
+                            "create",
+                            "import",
+                            "delete",
+                            "recover",
+                            "backup",
+                            "restore",
+                            "managecontacts",
+                            "manageissuers",
+                            "getissuers",
+                            "listissuers",
+                            "setissuers",
+                            "deleteissuers",
+                            "purge"
+                        ]
+                    }
+                }]
+            }
+        }
+
+    ]
+}

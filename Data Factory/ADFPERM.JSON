@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "DataFactory_name": {
+        "value": "BQAZE1IRDARRGDF01"
+      },
+      "DataFactory_tags": {
+        "value": {
+          "app-name": "Research and Development Staging Archive",
+          "business-unit": "R&D",
+          "environment": "Development",
+          "originating-request-number": "RITM0011623",
+          "project-code": "RDAR"
+        }
+      },
+      "location": {
+        "value": "[resourceGroup().location]"
+      }
+    }
+  }

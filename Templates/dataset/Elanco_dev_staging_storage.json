@@ -1,0 +1,18 @@
+{
+	"name": "Elanco_dev_staging_storage",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "RDARAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "rnd"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

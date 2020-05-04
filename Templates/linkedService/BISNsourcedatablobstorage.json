@@ -1,0 +1,20 @@
+{
+	"name": "BISNsourcedatablobstorage",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "BISNsourcedatablobstorage   RG-BDAZE1IBISN\nStorage-bdazweibisnsa01",
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "DevAzureKeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "BISNstorageconnection",
+				"secretVersion": "e558ebd9384b4284bfb07538baaeeaee"
+			}
+		}
+	}
+}

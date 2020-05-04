@@ -1,0 +1,33 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageaccount_name": {
+            "value": "bqaze1irdarsa01"
+        },
+        "storageaccount_tags": {
+            "value": {
+                "app-name": "Research and Development Staging Archive",
+                "business-unit": "R&D",
+                "environment": "Development",
+                "originating-request-number": "RITM0011623",
+                "project-code": "RDAR"
+            }
+        },
+        "storageaccount_sku": {
+            "value": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            }
+        },
+        "storageaccount_encrytion": {
+            "value": true
+        },
+        "storageaccount_http_traffic": {
+            "value": true
+        },
+        "storageaccount_delete_retention_policy": {
+            "value": false
+        }
+    }
+}

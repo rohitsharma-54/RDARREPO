@@ -1,0 +1,33 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vault_name": {
+            "value": "BQAZE1ERDARKV01"
+        },
+        "vault_tags": {
+            "value": {
+                "app-name": "Research and Development Staging Archive",
+                "business-unit": "R&D",
+                "environment": "Development",
+                "originating-request-number": "RITM0011623",
+                "project-code": "RDAR"
+            }
+        },
+        "vault_sku": {
+            "value": {
+                "family": "A",
+                "name": "standard"
+            }
+        },
+        "vault_enabled_for_deployment": {
+            "value": false
+        },
+        "vault_enabled_for_disk_encryption": {
+            "value": false
+        },
+        "vault_enabled_for_template_deployment": {
+            "value": false
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{
+	"name": "BISNstorage_sampledata",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BISNsourcedatablobstorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "R&D",
+				"container": "sampledata"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

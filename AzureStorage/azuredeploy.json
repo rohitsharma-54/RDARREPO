@@ -1,0 +1,98 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageaccount_name": {
+            "type": "string",
+            "metadata": {
+				"description": "Name of the Storage account"
+            }
+        },
+        "storageaccount_tags": {
+			"type": "object",
+			"metadata": {
+				"description": "The tags to be applied to deployed resources"
+            }
+        },
+        "storageaccount_sku": {
+            "type": "object",
+			"metadata": {
+				"description": "The sku details of the storage account"
+            }
+        },
+        "storageaccount_encrytion": {
+            "type": "bool"
+        },
+        "storageaccount_http_traffic": {
+            "type": "bool"
+        },
+        "storageaccount_delete_retention_policy": {
+            "type": "bool"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "name": "[parameters('storageaccount_name')]",
+            "location": "[resourceGroup().location]",
+            "tags": "[parameters('storageaccount_tags')]",
+            "sku": "[parameters('storageaccount_sku')]",
+            "kind": "Storage",
+            "properties": {
+                "networkAcls": {
+                    "bypass": "AzureServices",
+                    "virtualNetworkRules": [],
+                    "ipRules": [],
+                    "defaultAction": "Allow"
+                },
+                "supportsHttpsTrafficOnly": "[parameters('storageaccount_http_traffic')]",
+                "encryption": {
+                    "services": {
+                        "file": {
+                            "keyType": "Account",
+                            "enabled": "[parameters('storageaccount_encrytion')]"
+                        },
+                        "blob": {
+                            "keyType": "Account",
+                            "enabled": "[parameters('storageaccount_encrytion')]"
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/blobServices",
+            "apiVersion": "2019-06-01",
+            "name": "[concat(parameters('storageaccount_name'), '/default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageaccount_name'))]"
+            ],
+            "sku": "[parameters('storageaccount_sku')]",
+            "properties": {
+                "cors": {
+                    "corsRules": []
+                },
+                "deleteRetentionPolicy": {
+                    "enabled": "[parameters('storageaccount_delete_retention_policy')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/fileServices",
+            "apiVersion": "2019-06-01",
+            "name": "[concat(parameters('storageaccount_name'), '/default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageaccount_name'))]"
+            ],
+            "sku": "[parameters('storageaccount_sku')]",
+            "properties": {
+                "cors": {
+                    "corsRules": []
+                }
+            }
+        }
+    ]
+}
